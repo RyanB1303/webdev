@@ -3,57 +3,173 @@
 
 #+name: hostname
 #+BEGIN_SRC elisp
-  "localhost:8000"
+"http://localhost:8000"
+;;"https://lispwana-a06a050967e3.herokuapp.com"
 #+END_SRC
 
 #+RESULTS: hostname
-: localhost
+: http://localhost:8000
 
 #+name: Hello World
 #+begin_src restclient :results pure :var host=hostname
-GET http://:host
+GET :host
 #+end_src
 
 #+RESULTS: Hello World
 #+BEGIN_SRC js
 Hello, World!!!!
-// GET http://localhost:8000
+// GET https://lispwana-a06a050967e3.herokuapp.com
 // HTTP/1.1 200 OK
-// Date: Sun, 13 Oct 2024 04:15:07 GMT
-// Transfer-Encoding: chunked
+// Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1728796416&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=7GtxN%2FP13cIc%2FeadzeaIDerpryH0nOjrBvKPRe2Nj2M%3D"}]}
+// Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1728796416&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=7GtxN%2FP13cIc%2FeadzeaIDerpryH0nOjrBvKPRe2Nj2M%3D
+// Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}
+// Connection: close
+// Date: Sun, 13 Oct 2024 05:13:36 GMT
 // Server: Jetty(11.0.21)
-// Request duration: 0.022675s
+// Via: 1.1 vegur
+// Request duration: 1.129649s
 #+END_SRC
 
 #+name: Goodbye
 #+begin_src restclient :results pure :var host=hostname
-GET http://:host/goodbye
+GET :host/goodbye
  #+end_src
 
  #+RESULTS: Goodbye
  #+BEGIN_SRC js
  Goodbye, good world!
- // GET http://localhost:8000/goodbye
+ // GET https://lispwana-a06a050967e3.herokuapp.com/goodbye
  // HTTP/1.1 200 OK
- // Date: Sun, 13 Oct 2024 04:15:04 GMT
- // Transfer-Encoding: chunked
+ // Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1728796421&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=5yvltwcE%2Frb0HrdZhGHiUD5uGPqwfxOV57RUP2eVkso%3D"}]}
+ // Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1728796421&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=5yvltwcE%2Frb0HrdZhGHiUD5uGPqwfxOV57RUP2eVkso%3D
+ // Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}
+ // Connection: close
+ // Date: Sun, 13 Oct 2024 05:13:41 GMT
  // Server: Jetty(11.0.21)
- // Request duration: 0.027735s
+ // Via: 1.1 vegur
+ // Request duration: 1.007437s
  #+END_SRC
 
 #+name: Not Found
 #+begin_src restclient :results pure :var host=hostname
-GET http://:host/notfoundroutees
+GET :host/notfoundroutees
 #+end_src
 
 #+RESULTS: Not Found
 #+BEGIN_SRC html
 Page not found.
-<!-- GET http://localhost:8000/notfoundroutees -->
+<!-- GET https://lispwana-a06a050967e3.herokuapp.com/notfoundroutees -->
 <!-- HTTP/1.1 404 Not Found -->
-<!-- Date: Sun, 13 Oct 2024 04:13:13 GMT -->
+<!-- Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1728796433&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=THvdPqjy%2BokVl4jhZ4wCNTkWwDJl48tcVpyg4cNxCYc%3D"}]} -->
+<!-- Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1728796433&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&s=THvdPqjy%2BokVl4jhZ4wCNTkWwDJl48tcVpyg4cNxCYc%3D -->
+<!-- Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]} -->
+<!-- Connection: close -->
+<!-- Date: Sun, 13 Oct 2024 05:13:53 GMT -->
 <!-- Content-Type: text/html;charset=utf-8 -->
+<!-- Server: Jetty(11.0.21) -->
+<!-- Via: 1.1 vegur -->
+<!-- Request duration: 1.136221s -->
+#+END_SRC
+
+
+#+name: about
+#+begin_src restclient :results pure :var host=hostname
+GET :host/about
+#+end_src
+
+#+RESULTS: about
+#+BEGIN_SRC js
+Hello, i'm a hobbyist programmer that somehow found lisp to make website.
+// GET http://localhost:8000/about
+// HTTP/1.1 200 OK
+// Date: Sun, 13 Oct 2024 05:18:30 GMT
+// Transfer-Encoding: chunked
+// Server: Jetty(11.0.21)
+// Request duration: 0.027462s
+#+END_SRC
+
+#+name: Request page
+#+begin_src restclient :var host=hostname
+GET :host/request
+#+end_src
+
+#+RESULTS: Request page
+#+BEGIN_SRC html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Ring: Request Dump</title><style type="text/css">/*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.6.0
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
+
+h3.info {
+ font-size: 1.6em;
+ margin-left: 1em;
+ padding-top: .5em;
+ padding-bottom: .5em;
+}
+
+table.request {
+  font-size: 1.1em;
+  width: 800px;
+  margin-left: 1em;
+  margin-right: 1em;
+  background: lightgrey;
+}
+
+table.request tr {
+  line-height: 1.4em;
+}
+
+table.request td.key {
+  padding-left: .5em;
+  text-aligh: left;
+  width: 150px;
+}
+
+table.request td.val {
+  text-align: left;
+}
+</style></head><body><div id="content"><h3 class="info">Ring Request Values</h3><table class="request"><tbody><tr><td class="key">:server-port</td><td class="val">8000</td></tr><tr><td class="key">:server-name</td><td class="val">&quot;localhost&quot;</td></tr><tr><td class="key">:remote-addr</td><td class="val">&quot;[0:0:0:0:0:0:0:1]&quot;</td></tr><tr><td class="key">:uri</td><td class="val">&quot;/request&quot;</td></tr><tr><td class="key">:query-string</td><td class="val">nil</td></tr><tr><td class="key">:scheme</td><td class="val">:http</td></tr><tr><td class="key">:request-method</td><td class="val">:get</td></tr><tr><td class="key">:content-type</td><td class="val">nil</td></tr><tr><td class="key">:content-length</td><td class="val">0</td></tr><tr><td class="key">:character-encoding</td><td class="val">nil</td></tr><tr><td class="key">:ssl-client-cert</td><td class="val">nil</td></tr><tr><td class="key">:headers</td><td class="val">{&quot;accept-charset&quot; &quot;utf-8;q=1, gb2312;q=0.5, iso-8859-1;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-r;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5&quot;, &quot;accept&quot; &quot;*/*&quot;, &quot;connection&quot; &quot;keep-alive&quot;, &quot;host&quot; &quot;localhost:8000&quot;, &quot;content-length&quot; &quot;0&quot;, &quot;mime-version&quot; &quot;1.0&quot;}</td></tr><tr><td class="key">:body</td><td class="val">#object[org.eclipse.jetty.server.HttpInput 0x1d1b67aa &quot;HttpInput@488335274 cs=HttpChannelState@73239d5b{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} cp=org.eclipse.jetty.server.BlockingContentProducer@5212b56b eof=false&quot;]</td></tr></tbody></table><br /><table class="request user"><tbody><tr><tr><td class="key">:params</td><td class="val">{}</td></tr><tr><td class="key">:protocol</td><td class="val">&quot;HTTP/1.1&quot;</td></tr><tr><td class="key">:route-params</td><td class="val">{}</td></tr><tr><td class="key">:compojure/route</td><td class="val">[:get &quot;/request&quot;]</td></tr></tr></tbody></table></div></body></html>
+<!-- GET http://localhost:8000/request -->
+<!-- HTTP/1.1 200 OK -->
+<!-- Date: Sun, 13 Oct 2024 05:21:16 GMT -->
+<!-- Content-Type: text/html -->
 <!-- Transfer-Encoding: chunked -->
 <!-- Server: Jetty(11.0.21) -->
-<!-- Request duration: 0.008656s -->
+<!-- Request duration: 0.282408s -->
+#+END_SRC
+
+#+name: Yo Name
+#+begin_src restclient :var host=hostname
+GET :host/yo/Agus
+#+end_src
+
+#+RESULTS: Yo Name
+#+BEGIN_SRC js
+Yo! Agus!
+// GET http://localhost:8000/yo/Agus
+// HTTP/1.1 200 OK
+// Date: Sun, 13 Oct 2024 05:25:45 GMT
+// Transfer-Encoding: chunked
+// Server: Jetty(11.0.21)
+// Request duration: 0.026408s
+#+END_SRC
+
+#+name: calc
+#+begin_src restclient :var host=hostname
+GET :host/calc/5/:/10
+#+end_src
+
+#+RESULTS: calc
+#+BEGIN_SRC js
+5:10=1/2
+// GET http://localhost:8000/calc/5/:/10
+// HTTP/1.1 200 OK
+// Date: Sun, 13 Oct 2024 06:00:59 GMT
+// Transfer-Encoding: chunked
+// Server: Jetty(11.0.21)
+// Request duration: 0.015190s
 #+END_SRC
