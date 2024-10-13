@@ -1,0 +1,59 @@
+#+title: All Request Documentation
+#+property: header-args:restclient
+
+#+name: hostname
+#+BEGIN_SRC elisp
+  "localhost:8000"
+#+END_SRC
+
+#+RESULTS: hostname
+: localhost
+
+#+name: Hello World
+#+begin_src restclient :results pure :var host=hostname
+GET http://:host
+#+end_src
+
+#+RESULTS: Hello World
+#+BEGIN_SRC js
+Hello, World!!!!
+// GET http://localhost:8000
+// HTTP/1.1 200 OK
+// Date: Sun, 13 Oct 2024 04:15:07 GMT
+// Transfer-Encoding: chunked
+// Server: Jetty(11.0.21)
+// Request duration: 0.022675s
+#+END_SRC
+
+#+name: Goodbye
+#+begin_src restclient :results pure :var host=hostname
+GET http://:host/goodbye
+ #+end_src
+
+ #+RESULTS: Goodbye
+ #+BEGIN_SRC js
+ Goodbye, good world!
+ // GET http://localhost:8000/goodbye
+ // HTTP/1.1 200 OK
+ // Date: Sun, 13 Oct 2024 04:15:04 GMT
+ // Transfer-Encoding: chunked
+ // Server: Jetty(11.0.21)
+ // Request duration: 0.027735s
+ #+END_SRC
+
+#+name: Not Found
+#+begin_src restclient :results pure :var host=hostname
+GET http://:host/notfoundroutees
+#+end_src
+
+#+RESULTS: Not Found
+#+BEGIN_SRC html
+Page not found.
+<!-- GET http://localhost:8000/notfoundroutees -->
+<!-- HTTP/1.1 404 Not Found -->
+<!-- Date: Sun, 13 Oct 2024 04:13:13 GMT -->
+<!-- Content-Type: text/html;charset=utf-8 -->
+<!-- Transfer-Encoding: chunked -->
+<!-- Server: Jetty(11.0.21) -->
+<!-- Request duration: 0.008656s -->
+#+END_SRC
